@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Using jQuery Selectors and Events</title>
+        <script src="jquery-4.0.0.js"></script>
+    </head>
+    <body>
+       
+        <h1>Using jQuery Selectors and Events</h1>
+        <div style="display:inline-block; margin:5px">
+             <h2 id="clicktext">Click the button!</h2>
+             <button>Click Me</button>
+        </div>
+        <br>
+        <br>
+        <div style="display:inline-block; margin:5px">
+            <h2>What is the most used Javascript library?</h2>
+            <ul style="list-style:none">
+                <li><input type="radio" value="angular" name="rdo">Angular</li>
+                <li><input type="radio" value="vue" name="rdo">Vue</li>
+                <li><input type="radio" value="react" name="rdo">React</li>
+                <li><input type="radio" value="jquery" name="rdo">jQuery</li>
+           </ul>
+       </div>
+         <br>
+        <div style="display:inline-block; margin:5px">
+            <h2 id="hovertext">Hover over this text</h2>
+        </div>
+        <dl>
+            <dt style="font-weight: bold">"input[type='radio']"</dt>
+                <dd>jQuery selector used to find all input types of radio.</dd>
+            <dt style="font-weight: bold">"#hovertext"</dt>
+                <dd>jQuery selector used to find all elements with an ID of hovertext.</dd>
+            <dt style="font-weight: bold">"button"</dt>
+                <dd>jQuery selector used to find all button elements.</dd>
+        </dl>
+         
+        <script>
+            $(document).ready(function () {
+                
+                // Radio event
+                $("input[type='radio']").click(function (event) {
+                    if($(this).val()=="jquery")
+                    $(this).parent().append('<p style="margin:0;padding-left:10px;color:blue;">Correct</p>');
+                    else
+                    $(this).parent().append('<p style="margin:0;padding-left:10px;color:red;">Wrong</p>');
+                });
+                
+                // Mouseover event
+                 $("#hovertext").mouseover(function (event) {
+                    $( "#hovertext" ).css({
+                    "background-color" : "blue",
+                    "height" : "2em"
+                    });
+                });
+                
+                // Mouseout event
+                $("#hovertext").mouseout(function (event) {
+                    $("#hovertext").css({
+                    "background-color" : "white",
+                    "height" : "2em"
+                    });
+                });
+                
+                // Button click event
+                $("button").click(function (event) {
+                    $("#clicktext").text("You clicked me!");
+                    $("button").css("background-color", "red");
+                });
+            });
+        </script>
+    </body>
+</html>
